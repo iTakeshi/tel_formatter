@@ -1,6 +1,8 @@
 # TelFormatter
 
 Format your telephone numbers.
+[![Build Status](https://travis-ci.org/iTakeshi/tel_formatter.png?branch=master)](https://travis-ci.org/iTakeshi/tel_formatter)
+[![Coverage Status](https://coveralls.io/repos/iTakeshi/tel_formatter/badge.png)](https://coveralls.io/r/iTakeshi/tel_formatter)
 
 ## Notice
 
