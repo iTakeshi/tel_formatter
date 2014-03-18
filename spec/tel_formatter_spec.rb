@@ -25,5 +25,16 @@ describe TelFormatter do
       tel = "050000000"
       expect { TelFormatter.split(tel) }.to raise_error(ArgumentError)
     end
+    it "can handle Zenkaku chars and ignore non-numerical chars" do
+      tel = "０３−００００−００００"
+      expect(TelFormatter.split(tel)).to eq(["03", "0000", "0000"])
+    end
+  end
+
+  describe ".preprocess" do
+    it "converts Zenkaku chars to Hankaku, and excludes any non-numerical chars" do
+      tel = "０３−００００−００００"
+      expect(TelFormatter.preprocess(tel)).to eq("0300000000")
+    end
   end
 end

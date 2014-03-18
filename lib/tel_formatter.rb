@@ -1,3 +1,4 @@
+require "nkf"
 require "tel_formatter/version"
 
 module TelFormatter
@@ -9,6 +10,7 @@ module TelFormatter
   CELLPHONE_CODE_REGEXP = /\A(#{CELLPHONE_CODES.join('|')})(\d{4})(\d{4})\Z/
 
   def self.split(tel)
+    tel = self.preprocess(tel)
     case tel.length
     when 10
       if AREA_CODE_REGEXP =~ tel
@@ -27,5 +29,9 @@ module TelFormatter
     else
       raise ArgumentError, "Invalid telephone number"
     end
+  end
+
+  def self.preprocess(tel)
+    NKF.nkf('-m0Z0 -w', tel).split('').select { |c| /\d/ =~ c }.join
   end
 end
