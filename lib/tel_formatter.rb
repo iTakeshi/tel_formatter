@@ -5,9 +5,9 @@ module TelFormatter
   AREA_CODES = File.read(File.expand_path("../../data/area_codes.txt", __FILE__)).split("\n").reverse
   SPECIAL_CODES = File.read(File.expand_path("../../data/special_codes.txt", __FILE__)).split("\n").reverse
   CELLPHONE_CODES = File.read(File.expand_path("../../data/cellphone_codes.txt", __FILE__)).split("\n").reverse
-  AREA_CODE_REGEXP = /\A(#{AREA_CODES.join('|')})(\d{1,4})(\d{4})\Z/
-  SPECIAL_CODE_REGEXP = /\A(#{SPECIAL_CODES.join('|')})(\d{6})\Z/
-  CELLPHONE_CODE_REGEXP = /\A(#{CELLPHONE_CODES.join('|')})(\d{4})(\d{4})\Z/
+  AREA_CODE_REGEXP = /\A(#{AREA_CODES.join("|")})(\d{1,4})(\d{4})\Z/
+  SPECIAL_CODE_REGEXP = /\A(#{SPECIAL_CODES.join("|")})(\d{6})\Z/
+  CELLPHONE_CODE_REGEXP = /\A(#{CELLPHONE_CODES.join("|")})(\d{4})(\d{4})\Z/
 
   def self.format(tel)
     self.split(tel).join("-")
@@ -36,6 +36,6 @@ module TelFormatter
   end
 
   def self.preprocess(tel)
-    NKF.nkf('-m0Z0 -w', tel).split('').select { |c| /\d/ =~ c }.join
+    NKF.nkf("-m0Z0 -w", tel).split("").select { |c| /\d/ =~ c }.join
   end
 end

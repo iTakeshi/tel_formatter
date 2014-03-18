@@ -1,5 +1,5 @@
-require 'spec_helper'
-require 'tel_formatter'
+require "spec_helper"
+require "tel_formatter"
 
 describe TelFormatter do
   describe ".format" do

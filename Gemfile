@@ -1,9 +1,9 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-# Specify your gem's dependencies in tel_formatter.gemspec
+# Specify your gem"s dependencies in tel_formatter.gemspec
 gemspec
 
 group :test do
-  gem 'rspec'
-  gem 'coveralls', require: false
+  gem "rspec"
+  gem "coveralls", require: false
 end
