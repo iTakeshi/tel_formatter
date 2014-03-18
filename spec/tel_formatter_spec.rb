@@ -2,6 +2,13 @@ require 'spec_helper'
 require 'tel_formatter'
 
 describe TelFormatter do
+  describe ".format" do
+    it "returns hyphenated telephone number" do
+      tel = "0300000000"
+      expect(TelFormatter.format(tel)).to eq("03-0000-0000")
+    end
+  end
+
   describe ".split" do
     it "splits telephone number into 2 or 3 blocks" do
       tel = "0300000000"

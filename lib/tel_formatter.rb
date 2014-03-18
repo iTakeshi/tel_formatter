@@ -9,6 +9,10 @@ module TelFormatter
   SPECIAL_CODE_REGEXP = /\A(#{SPECIAL_CODES.join('|')})(\d{6})\Z/
   CELLPHONE_CODE_REGEXP = /\A(#{CELLPHONE_CODES.join('|')})(\d{4})(\d{4})\Z/
 
+  def self.format(tel)
+    self.split(tel).join("-")
+  end
+
   def self.split(tel)
     tel = self.preprocess(tel)
     case tel.length
