@@ -28,8 +28,8 @@ Or install it yourself as:
 ```ruby
 require 'tel_formatter'
 
-Telformatter.format("0312345678") #=> "03-1234-5678"
-Telformatter.format("０３．１２３５．５６７８") #=> "03-1234-5678"
+TelFormatter.format("0312345678") #=> "03-1234-5678"
+TelFormatter.format("０３．１２３５．５６７８") #=> "03-1234-5678"
 ```
 
 ## Contributing
