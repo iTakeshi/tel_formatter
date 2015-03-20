@@ -8,12 +8,17 @@ describe TelFormatter do
       expect(TelFormatter.format(tel)).to eq("03-0000-0000")
     end
     it "returns hyphenated telephone number based on split format 3 digit (eg Koganei, Tokyo) geo code" do
-      tel = "0422221111"
-      expect(TelFormatter.format(tel)).to eq("042-222-1111")
+      tel = "0429991111"
+      expect(TelFormatter.format(tel)).to eq("042-999-1111")
     end
     it "returns hyphenated telephone number based on split format 4 digit (eg Nishitama, Tokyo) geo code" do
-      tel = "0428221111"
-      expect(TelFormatter.format(tel)).to eq("0428-22-1111")
+      tel = "0428991111"
+      expect(TelFormatter.format(tel)).to eq("0428-99-1111")
+    end
+    it "returns hyphenated telephone number based on split format 4 digit (eg Chofu, Tokyo) geo code" do
+      tel = "0422991111"
+      expect(TelFormatter.format(tel)).to eq("0422-99-1111")
+      # This should NOT be "042-299-1111"
     end
   end
 
@@ -32,10 +37,12 @@ describe TelFormatter do
       tel = "09000000000"
       expect(TelFormatter.split(tel)).to eq(["090", "0000", "0000"])
 
-      tel = "0422221111"
-      expect(TelFormatter.split(tel)).to eq(["042", "222", "1111"])
-      tel = "0428221111"
-      expect(TelFormatter.split(tel)).to eq(["0428", "22", "1111"])
+      tel = "0429991111"
+      expect(TelFormatter.split(tel)).to eq(["042", "999", "1111"])
+      tel = "0428991111"
+      expect(TelFormatter.split(tel)).to eq(["0428", "99", "1111"])
+      tel = "0422991111"
+      expect(TelFormatter.split(tel)).to eq(["0422", "99", "1111"])
 
     end
     it "raises ArgumentError when Invalid number is given" do
