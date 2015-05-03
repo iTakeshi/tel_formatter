@@ -7,14 +7,17 @@ describe TelFormatter do
       tel = "0300000000"
       expect(TelFormatter.format(tel)).to eq("03-0000-0000")
     end
+
     it "returns hyphenated telephone number based on split format 3 digit (eg Koganei, Tokyo) geo code" do
       tel = "0429991111"
       expect(TelFormatter.format(tel)).to eq("042-999-1111")
     end
+
     it "returns hyphenated telephone number based on split format 4 digit (eg Nishitama, Tokyo) geo code" do
       tel = "0428991111"
       expect(TelFormatter.format(tel)).to eq("0428-99-1111")
     end
+
     it "returns hyphenated telephone number based on split format 4 digit (eg Chofu, Tokyo) geo code" do
       tel = "0422991111"
       expect(TelFormatter.format(tel)).to eq("0422-99-1111")
@@ -45,8 +48,8 @@ describe TelFormatter do
       expect(TelFormatter.split(tel)).to eq(["0428", "99", "1111"])
       tel = "0422991111"
       expect(TelFormatter.split(tel)).to eq(["0422", "99", "1111"])
-
     end
+
     it "raises ArgumentError when Invalid number is given" do
       tel = "0200000000"
       expect { TelFormatter.split(tel) }.to raise_error(ArgumentError)
@@ -55,6 +58,7 @@ describe TelFormatter do
       tel = "050000000"
       expect { TelFormatter.split(tel) }.to raise_error(ArgumentError)
     end
+
     it "can handle Zenkaku chars and ignore non-numerical chars" do
       tel = "０３−００００−００００"
       expect(TelFormatter.split(tel)).to eq(["03", "0000", "0000"])
