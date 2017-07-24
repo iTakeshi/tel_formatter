@@ -9,6 +9,7 @@ module TelFormatter
   AREA_CODE_REGEXP = /\A(#{AREA_CODES.join("|")})(\d{1,4})(\d{4})\Z/
   SPECIAL_CODE_10_REGEXP = /\A(#{SPECIAL_CODES_10.join("|")})(\d{6})\Z/
   SPECIAL_CODE_11_REGEXP = /\A(#{SPECIAL_CODES_11.join("|")})(\d{7})\Z/
+  CELLPHONE_CODE_10_REGEXP = /\A(#{CELLPHONE_CODES.join("|")})(\d{3})(\d{4})\Z/
   CELLPHONE_CODE_REGEXP = /\A(#{CELLPHONE_CODES.join("|")})([1-9]\d{3})(\d{4})\Z/
 
   def self.format(tel)
@@ -23,6 +24,8 @@ module TelFormatter
         return [$1, $2, $3]
       elsif SPECIAL_CODE_10_REGEXP =~ tel
         return [$1, $2]
+      elsif CELLPHONE_CODE_10_REGEXP =~ tel
+        return [$1, $2, $3]
       else
         raise ArgumentError, "Invalid telephone number"
       end

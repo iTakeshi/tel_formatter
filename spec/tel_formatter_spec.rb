@@ -48,11 +48,11 @@ describe TelFormatter do
       expect(TelFormatter.split(tel)).to eq(["0428", "99", "1111"])
       tel = "0422991111"
       expect(TelFormatter.split(tel)).to eq(["0422", "99", "1111"])
+      tel = "0709999999"
+      expect(TelFormatter.split(tel)).to eq(["070", "999", "9999"])
     end
 
     it "raises ArgumentError when Invalid number is given" do
-      tel = "0200000000"
-      expect { TelFormatter.split(tel) }.to raise_error(ArgumentError)
       tel = "04000000000"
       expect { TelFormatter.split(tel) }.to raise_error(ArgumentError)
       tel = "050000000"
