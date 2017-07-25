@@ -53,6 +53,8 @@ describe TelFormatter do
     end
 
     it "raises ArgumentError when Invalid number is given" do
+      tel = "0100000000"
+      expect { TelFormatter.split(tel) }.to raise_error(ArgumentError)
       tel = "04000000000"
       expect { TelFormatter.split(tel) }.to raise_error(ArgumentError)
       tel = "050000000"
