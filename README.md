@@ -7,7 +7,7 @@ Format your telephone numbers.
 
 ## Notice
 
-I am not assuming this gem will be used outside Japan.
+This gem is only applicable for Japanese phone number formatting.
 
 ## Installation
 
